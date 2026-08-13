@@ -1,4 +1,4 @@
-```html
+```html id="8gq2mj"
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -7,61 +7,102 @@
     <title>Pablogna</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Arial, sans-serif;
-            background: white;
-            color: #222;
+
+            background: #f5f1e8;
+            color: #252525;
+
+            font-family: Georgia, "Times New Roman", serif;
         }
 
         .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 40px 25px;
             text-align: center;
-            padding: 30px;
         }
 
         h1 {
-            font-size: 32px;
+            margin: 0 0 18px 0;
+
+            font-size: 38px;
             font-weight: normal;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
+            letter-spacing: 7px;
         }
 
-        p {
-            font-size: 17px;
-            margin-bottom: 35px;
+        .instruction {
+            margin: 0 0 45px 0;
+
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: #666;
         }
 
         button {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
+
             border-radius: 50%;
-            border: 2px solid #222;
-            background: white;
-            color: #222;
-            font-size: 42px;
+            border: 1px solid #252525;
+
+            background: transparent;
+            color: #252525;
+
+            font-family: Arial, sans-serif;
+            font-size: 38px;
+            font-weight: 300;
+
             cursor: pointer;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             margin: 0 auto;
+
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                transform 0.15s ease;
         }
 
         button:hover {
-            background: #f2f2f2;
+            background: #252525;
+            color: #f5f1e8;
         }
 
         button:active {
-            transform: scale(0.97);
+            transform: scale(0.96);
         }
 
         .status {
-            margin-top: 25px;
-            font-size: 14px;
-            color: #666;
+            margin-top: 28px;
+
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            color: #888;
+
+            min-height: 18px;
+        }
+
+        .footer {
+            margin-top: 70px;
+
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: #aaa;
         }
     </style>
 </head>
@@ -72,14 +113,20 @@
 
         <h1>PABLOGNA</h1>
 
-        <p>Indossa le cuffie e premi Play</p>
+        <p class="instruction">
+            Indossa le cuffie e ascolta
+        </p>
 
         <button id="playButton" aria-label="Riproduci Pablogna">
             ▶
         </button>
 
         <div class="status" id="status">
-            Premi Play per ascoltare
+            Premi per ascoltare
+        </div>
+
+        <div class="footer">
+            Luigi Brogno · Poesia 3D
         </div>
 
         <audio id="audio" preload="metadata">
@@ -96,12 +143,15 @@
         button.addEventListener("click", function () {
 
             if (audio.paused) {
+
                 audio.play();
 
-                button.textContent = "❚❚";
+                button.textContent = "Ⅱ";
                 button.setAttribute("aria-label", "Metti in pausa");
-                status.textContent = "Pablogna in riproduzione";
+                status.textContent = "In ascolto...";
+
             } else {
+
                 audio.pause();
 
                 button.textContent = "▶";
@@ -111,13 +161,14 @@
         });
 
         audio.addEventListener("ended", function () {
+
             button.textContent = "▶";
             button.setAttribute("aria-label", "Riproduci Pablogna");
-            status.textContent = "Premi Play per riascoltare";
+            status.textContent = "Premi per riascoltare";
+
         });
     </script>
 
 </body>
 </html>
 ```
-
